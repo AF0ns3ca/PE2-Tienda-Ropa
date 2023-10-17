@@ -3,30 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <title>Document</title>
   </head>
   <body>
     <div class="container">
       <div class="wrapper">
         <div class="show">
-            <p>Mostrar Producto</p>
+          <p>Mostrar Producto</p>
           <button id="btn-show">Muestra</button>
         </div>
         <div class="add">
+          <p>Añadir Producto</p>
           <input type="text" id="name" placeholder="Nombre Producto" />
-          <input type="text" id="amount" placeholder="Cantidad Producto" />
-          <input type="text" id="price" placeholder="Precio Producto" />
+          <input type="number" id="amount" placeholder="Cantidad Producto" />
+          <input type="number" id="price" placeholder="Precio Producto" />
           <button id="btn-add">Añade</button>
         </div>
         <div class="total">
+          <p>Ver Precio Total Inventario</p>
           <button id="btn-total">Total Precio Inventario</button>
         </div>
         <div class="search">
+          <p>Buscar y eliminar Productos</p>
           <input type="text" id="search" placeholder="Buscar Producto" />
           <button id="btn-search">Buscar</button>
           <button id="btn-delete">Borrar Producto</button>
+          <p class="searchResult" id="searchResult">
+
+          </p>
         </div>
+        <div class="update"></div>
       </div>
       <script src="js/index.js"></script>
     </div>
