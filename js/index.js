@@ -31,7 +31,7 @@ const addToInventory = () => {
   }; //structured item to add to inventory
 
   stock.push(newItem);
-  console.log("Item added to stock");
+  console.log(newItem.name + " added to stock");
 };
 
 const totalPrice = () => {
@@ -46,6 +46,7 @@ const totalPrice = () => {
 
 const searchProduct = () => {
   const pro = search.value.toLowerCase();
+  let productFound = false;
   if (pro === "") {
     alert("Introduzca un valor de busqueda");
   } else {
@@ -55,10 +56,10 @@ const searchProduct = () => {
         console.log("Cantidad en stock: " + element.amount + " unidades");
         console.log("Precio por unidad: " + element.price + "€");
         search.value = "";
-        return;
+        productFound = true;
       }
     });
-    console.log("Producto no econtrado");
+    productFound ? null : console.log("Producto no encontrado");
     search.value = "";
   }
 };
@@ -67,6 +68,7 @@ const searchProduct = () => {
 
 const deleteProduct = () => {
   const pro = search.value.toLowerCase();
+  let productFound = false;
   if (pro === "") {
     alert("Introduzca un valor de busqueda");
   } else {
@@ -74,10 +76,10 @@ const deleteProduct = () => {
       if (element.name.toLowerCase() === pro) {
         stock.pop(element);
         search.value = "";
-        return;
+        productFound = true;
       }
     });
-    console.log("Producto no econtrado");
+    productFound ? console.log("El producto ha sido eliminado del stock") : console.log("Producto no encontrado");
     search.value = "";
   }
 };

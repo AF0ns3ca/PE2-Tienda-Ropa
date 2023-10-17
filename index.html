@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css">
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="wrapper">
-            <button id="btn-show">Muestra</button>
-            <button id="btn-add">Añade</button>
-            <button id="btn-total">Total Precio Inventario</button>
-            <input type="text" id="search" placeholder="Buscar Producto">
-            <button id="btn-search">Buscar</button>
-            <button id="btn-delete">Borrar Producto</button>
+      <div class="wrapper">
+        <div class="show">
+            <p>Mostrar Producto</p>
+          <button id="btn-show">Muestra</button>
         </div>
-        <script src="js/index.js"></script>
+        <div class="add">
+          <input type="text" id="name" placeholder="Nombre Producto" />
+          <input type="text" id="amount" placeholder="Cantidad Producto" />
+          <input type="text" id="price" placeholder="Precio Producto" />
+          <button id="btn-add">Añade</button>
+        </div>
+        <div class="total">
+          <button id="btn-total">Total Precio Inventario</button>
+        </div>
+        <div class="search">
+          <input type="text" id="search" placeholder="Buscar Producto" />
+          <button id="btn-search">Buscar</button>
+          <button id="btn-delete">Borrar Producto</button>
+        </div>
+      </div>
+      <script src="js/index.js"></script>
     </div>
-</body>
+  </body>
 </html>
