@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const btnSearch = document.getElementById("btn-search");
   const btnDel = document.getElementById("btn-delete");
   const search = document.getElementById("search");
-
+  const tabla = document.getElementById("inventTable");
 
   let stock = [
     { id: 1, name: "camisetas", amount: 50, price: 15 },
@@ -13,10 +13,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
     { id: 3, name: "zapatos", amount: 20, price: 50 },
   ];
 
-  const showInventory = () => {
+  const createTable = () => {
     stock.forEach((element) => {
-      console.log(element);
+      let newRow = `
+    <tr>
+      <td>${element.id}</td>
+      <td>${element.name}</td>
+      <td>${element.amount}</td>
+      <td>${element.price}</td>
+    </tr>
+  `;
+      tabla.innerHTML += newRow;
     });
+  };
+
+  window.addEventListener("load", createTable);
+
+  const showInventory = () => {
+    /*stock.forEach((element) => {
+      console.log(element);
+    });*/
+    
   };
 
   const addToInventory = () => {
@@ -49,9 +66,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       stock.push(newItem);
       console.log(newItem.name + " added to stock");
-      document.getElementById("name").value = "";
+      /*document.getElementById("name").value = "";
       document.getElementById("amount").value = "";
-      document.getElementById("price").value = "";
+      document.getElementById("price").value = "";*/
+      let newRow = `
+    <tr>
+      <td>${newItem.id}</td>
+      <td>${newItem.name}</td>
+      <td>${newItem.amount}</td>
+      <td>${newItem.price}</td>
+    </tr>
+  `;
+  tabla.innerHTML += newRow;
     }
   };
 
@@ -86,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           productFound = true;
         }
       });
-      productFound ? null : console.log("Producto no encontrado"); searchResult.innerHTML = `<span>Producto no encontrado</span>`;
+      productFound ? null : console.log("Producto no encontrado");
       search.value = "";
     }
   };

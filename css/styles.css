@@ -76,6 +76,13 @@
     border: 1px solid black;
 }
 
+table, th, tr, td{
+  border-collapse: collapse;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid black;
+}
+
 .searchResult{
     display: flex;
     flex-direction: column;

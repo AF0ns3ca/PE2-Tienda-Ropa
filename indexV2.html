@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/stylesV2.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav">
+        <div class="nav-input">
+          <input type="text" id="search" placeholder="Buscar Producto" />
+        </div>
+        <div class="nav-btn">
+          <button id="btn-search">Buscar</button>
+          <button id="btn-delete">Borrar Producto</button>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="title">
+            <h1>Contol de Inventario</h1>
+        </div>
+        <div class="inventory">
+            <table>
+              <thead>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+              </thead>
+              <tbody id="inventTable">
+  
+              </tbody>
+            </table>
+          </div>
+          <div class="addProduct">
+            <input type="text" id="name" placeholder="Nombre Producto" />
+            <input type="number" id="amount" placeholder="Cantidad Producto" />
+            <input type="number" id="price" placeholder="Precio Producto" />
+            <button id="btn-add">Añade</button>
+          </div>
+      </div>
+      <script src="js/indexV2.js"></script>
+    </div>
+  </body>
+</html>

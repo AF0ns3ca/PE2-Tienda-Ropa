@@ -1,0 +1,120 @@
+/*Downloaded font added*/
+@font-face {
+  font-family: 'Mulish';
+  src: url('/assets/fonts/mulish/Mulish-Regular.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(90deg, #a0b5eb, 40%, #c9f0e4);
+}
+
+.nav {
+  width: 70%;
+  background-color: rebeccapurple;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  background-color: #eeeeee;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.18), 0 0 10px rgba(0, 0, 0, 0.22);
+}
+
+.nav-btn {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  gap: 30px;
+}
+
+.nav-input {
+  width: 50%;
+}
+
+.nav input,
+button {
+  padding: 8px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.nav button {
+  width: 200px;
+}
+
+.nav input {
+  width: 90%;
+}
+
+.wrapper {
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.18), 0 0 10px rgba(0, 0, 0, 0.22);
+  background-color: #eeeeee;
+}
+
+.title{
+  font-family: sans-serif;
+}
+.inventory {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+  padding: 10px;
+  border-collapse: collapse;
+  border: 1px solid black;
+  border-style: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 1)
+
+}
+
+tr,
+td {
+  padding: 10px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  align-items: left;
+  justify-content: left;
+}
+
+.addProduct {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.addProduct input{
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+button{
+  background: linear-gradient(90deg,#0f0c29,40%, #302b63);
+  color: #c9f0e4;
+}
