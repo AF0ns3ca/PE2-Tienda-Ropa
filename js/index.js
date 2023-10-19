@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const btnSearch = document.getElementById("btn-search");
   const btnDel = document.getElementById("btn-delete");
   const search = document.getElementById("search");
-  const tabla = document.getElementById("inventTable");
+  const table = document.getElementById("inventTable");
 
   let stock = [
     { id: 1, name: "camisetas", amount: 50, price: 15 },
@@ -27,7 +27,20 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
   };
 
-  window.addEventListener("load", createTable);
+  const updateTable = () => {
+    table.innerHTML = "";
+    stock.forEach((element) => {
+      let newRow = `
+      <tr>
+        <td>${element.id}</td>
+        <td>${element.name}</td>
+        <td>${element.amount}</td>
+        <td>${element.price}</td>
+      </tr>
+    `;
+      table.innerHTML += newRow;
+    });
+  };
 
   const showInventory = () => {
     /*stock.forEach((element) => {
@@ -81,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   };
 
-  const totalPrice = () => {
+  /*const totalPrice = () => {
     let totalPrice = 0;
     stock.forEach((element) => {
       console.log("Precio " + element.name + ": " + element.price);
@@ -89,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
 
     console.log("PRECIO TOTAL INVENTARIO: " + totalPrice);
-  };
+  };*/
 
   const searchProduct = () => {
     const pro = search.value.toLowerCase();
@@ -119,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   //const updateInventory = () => {};
 
-  const deleteProduct = () => {
+ const deleteProduct = () => {
     const pro = search.value.toLowerCase();
     let productFound = false;
     if (pro === "") {
@@ -141,9 +154,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   btnShow.addEventListener("click", showInventory);
   btnAdd.addEventListener("click", addToInventory);
-  btnTotal.addEventListener("click", totalPrice);
+  //btnTotal.addEventListener("click", totalPrice);
   btnSearch.addEventListener("click", searchProduct);
   btnDel.addEventListener("click", deleteProduct);
+  updateTable();
 
   //Allows you to use the numpad and keyboard to interact with the calculator
   document.addEventListener("keydown", function (event) {

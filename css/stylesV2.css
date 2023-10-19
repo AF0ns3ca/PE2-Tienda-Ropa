@@ -1,7 +1,7 @@
 /*Downloaded font added*/
 @font-face {
-  font-family: 'Mulish';
-  src: url('/assets/fonts/mulish/Mulish-Regular.ttf') format('truetype');
+  font-family: "Mulish";
+  src: url("/assets/fonts/mulish/Mulish-Regular.ttf") format("truetype");
 }
 
 * {
@@ -71,7 +71,7 @@ button {
   background-color: #eeeeee;
 }
 
-.title{
+.title {
   font-family: sans-serif;
 }
 .inventory {
@@ -87,8 +87,7 @@ table {
   border: 1px solid black;
   border-style: hidden;
   border-radius: 5px;
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 1)
-
+  box-shadow: 0 0 0 2.5px rgba(15, 12, 41, 1);
 }
 
 tr,
@@ -100,6 +99,16 @@ td {
   justify-content: left;
 }
 
+thead {
+  background: linear-gradient(90deg, #0f0c29, 40%, #302b63);
+  color: #c9f0e4;
+  border-radius: 5px;
+}
+
+.found {
+  color: red;
+}
+
 .addProduct {
   width: 90%;
   display: flex;
@@ -107,38 +116,43 @@ td {
   gap: 10px;
 }
 
-.addInputs{
+.addInputs {
   width: 100%;
   display: flex;
-  gap: 10px; 
+  gap: 10px;
 }
 
-.addInputs input{
+.addInputs input {
   width: 60%;
   padding: 8px;
   border: 1px solid black;
   border-radius: 5px;
 }
 
-.addBtn{
-  width: 100%;  
+.addBtn {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.addBtn button{
+.addBtn button {
   width: 30%;
 }
 
-button{
-  background: linear-gradient(90deg,#0f0c29,40%, #302b63);
+button {
+  background: linear-gradient(90deg, #0f0c29, 40%, #302b63);
   color: #c9f0e4;
   transition: 0.5s;
   cursor: pointer;
 }
 
-button:hover{
+button:hover {
+  background: linear-gradient(90deg, #a0b5eb, 40%, #c9f0e4);
+  color: #0f0c29;
+}
+
+.found{
   background: linear-gradient(90deg, #a0b5eb, 40%, #c9f0e4);
   color: #0f0c29;
 }
