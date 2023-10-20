@@ -1,6 +1,12 @@
+/**
+ * @author Alvaro Fonseca Hernandez
+ * @github
+ */
+
 document.addEventListener("DOMContentLoaded", function (event) {
   const table = document.getElementById("inventTable");
   const btnAdd = document.getElementById("btn-add");
+  const btnEdit = document.getElementById("btn-edit");
   const btnDel = document.getElementById("btn-delete");
   const btnSearch = document.getElementById("btn-search");
   const btnTotal = document.getElementById("btn-total");
@@ -16,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     table.innerHTML = "";
     stock.forEach((element) => {
       let newRow = `
-      <tr>
+      <tr class="cell">
         <td>${element.id}</td>
         <td>${element.name}</td>
         <td>${element.amount} uds</td>
@@ -27,10 +33,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
   };
 
+  const selectRow = () => {
+    stock.forEach((element, i) => {
+      table.rows[i].onclick = () => {
+        table.rows[i].classList.toggle("found");
+      };
+    });
+  };
+
   const addToInventory = () => {
     let itemId;
     if (stock.length === 0) {
-      itemId = 0;
+      itemId = 1;
     } else {
       itemId = stock[stock.length - 1].id + 1; //id autoincrement
     }
@@ -48,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     if (itemName === "" || isNaN(itemAmount) || isNaN(itemPrice)) {
       alert("Todos los campos son obligatorios");
     } else {
-      if (itemAmount <= 1 || itemPrice < 0) {
+      if (itemAmount <= 0 || itemPrice < 0) {
         alert("Introduce valores válidos");
       } else {
         const newItem = {
@@ -72,24 +86,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const deleteProduct = () => {
     const pro = search.value.toLowerCase();
     let productFound = false;
-    if (pro === "") {
-      alert("Introduzca un valor de busqueda");
-    } else {
-      stock.forEach((element, i) => {
-        if (element.name.toLowerCase() === pro) {
-          console.log(pro);
-          stock.splice(i, 1);
-          search.value = "";
-          productFound = true;
-        }
-      });
-      productFound
-        ? console.log("El producto ha sido eliminado del stock")
-        : console.log("Producto no encontrado");
-      updateTable();
-      console.log(stock);
-      search.value = "";
-    }
+    stock.forEach((element, i) => {
+      if (
+        element.name.toLowerCase() === pro ||
+        table.rows[i].classList.contains("found")
+      ) {
+        console.log(pro);
+        stock.splice(i, 1);
+        search.value = "";
+        productFound = true;
+      }
+    });
+    productFound
+      ? console.log("El producto ha sido eliminado del stock")
+      : console.log("Producto no encontrado");
+    updateTable();
+    console.log(stock);
+    search.value = "";
   };
 
   const searchProduct = () => {
@@ -105,12 +118,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
           currentRow.classList.add("found");
           console.log(table.innerHTML);
           console.log(currentRow);
-          search.value = "";
+          //search.value = "";
           productFound = true;
         }
       });
       productFound ? null : console.log("Producto no encontrado");
-      search.value = "";
+      //search.value = "";
     }
   };
 
@@ -120,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     stock.forEach((element) => {
       console.log("Precio " + element.name + ": " + element.price);
 
-      totalPrice += (element.amount*element.price);
+      totalPrice += element.amount * element.price;
     });
     let priceRow = table.insertRow();
     priceRow.innerHTML = `
@@ -138,6 +151,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   btnSearch.addEventListener("click", searchProduct);
   btnTotal.addEventListener("click", totalPrice);
   updateTable();
+  selectRow();
 
   //Allows you to use the numpad and keyboard to interact with the calculator
   document.addEventListener("keydown", function (event) {

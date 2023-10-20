@@ -105,6 +105,13 @@ thead {
   border-radius: 5px;
 }
 
+.cell{
+  cursor: pointer;
+  &:hover{
+    background-color: #9b9b9b;;
+  }
+}
+
 .found {
   color: red;
 }
@@ -129,15 +136,12 @@ thead {
   border-radius: 5px;
 }
 
-.addBtn {
+.actionBtn {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.addBtn button {
-  width: 30%;
+  gap: 10px;
 }
 
 button {
@@ -155,4 +159,8 @@ button:hover {
 .found{
   background: linear-gradient(90deg, #a0b5eb, 40%, #c9f0e4);
   color: #0f0c29;
+}
+
+.addBtn button {
+  width: 40%;
 }
