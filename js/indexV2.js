@@ -11,11 +11,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const btnSearch = document.getElementById("btn-search");
   const btnTotal = document.getElementById("btn-total");
   const search = document.getElementById("search");
+  const btnSave = document.getElementById("btn-save");
+  const itemName = document.getElementById("name");
+  const itemAmount = document.getElementById("amount");
+  const itemPrice = document.getElementById("price");
+  let foundItemId;
 
   let stock = [
     { id: 1, name: "camisetas", amount: 50, price: 15 },
     { id: 2, name: "pantalones", amount: 30, price: 30 },
     { id: 3, name: "zapatos", amount: 20, price: 50 },
+    { id: 4, name: "gorras", amount: 10, price: 20 },
+    { id: 5, name: "calcetines", amount: 80, price: 8 },
   ];
 
   const updateTable = () => {
@@ -31,11 +38,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     `;
       table.innerHTML += newRow;
     });
+    selectRow();
   };
 
   const selectRow = () => {
     stock.forEach((element, i) => {
       table.rows[i].onclick = () => {
+        stock.forEach((element, i) => {
+          table.rows[i].classList.remove("found");
+        });
         table.rows[i].classList.toggle("found");
       };
     });
@@ -84,14 +95,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
   };
 
   const deleteProduct = () => {
-    const pro = search.value.toLowerCase();
     let productFound = false;
     stock.forEach((element, i) => {
-      if (
-        element.name.toLowerCase() === pro ||
-        table.rows[i].classList.contains("found")
-      ) {
-        console.log(pro);
+      if (table.rows[i].classList.contains("found")) {
+        console.log(table.rows[i]);
         stock.splice(i, 1);
         search.value = "";
         productFound = true;
@@ -146,19 +153,50 @@ document.addEventListener("DOMContentLoaded", function (event) {
     console.log("PRECIO TOTAL INVENTARIO: " + totalPrice);
   };
 
+  const editProduct = () => {
+    stock.forEach((item, i) => {
+      if (table.rows[i].classList.contains("found")) {
+        foundItemId = item.id;
+        itemName.value = item.name;
+        itemAmount.value = item.amount;
+        itemPrice.value = item.price;
+      }
+    });
+    /*const actionPane = document.getElementById("actionBtn");
+    actionPane.innerHTML += `
+      <button id="btn-save">Guardar Cambios</button>
+    `;*/
+  };
+
+  function saveEditProduct() {
+    const editedItem = {
+      id: foundItemId,
+      name: itemName.value,
+      amount: parseFloat(itemAmount.value),
+      price: parseFloat(itemPrice.value),
+    };
+    stock.forEach((item, i) => {
+      if (item.id === foundItemId) {
+        stock.splice(i, 1, editedItem);
+      }
+    });
+    updateTable();
+  }
+
   btnAdd.addEventListener("click", addToInventory);
   btnDel.addEventListener("click", deleteProduct);
   btnSearch.addEventListener("click", searchProduct);
   btnTotal.addEventListener("click", totalPrice);
+  btnEdit.addEventListener("click", editProduct);
+  btnSave.addEventListener("click", saveEditProduct);
   updateTable();
-  selectRow();
-
-  //Allows you to use the numpad and keyboard to interact with the calculator
-  document.addEventListener("keydown", function (event) {
+  //selectRow();
+  //Allows you to use the numpad and keyboard to interact
+  /*document.addEventListener("keydown", function (event) {
     switch (event.key) {
       case "Enter":
         addToInventory();
         break;
     }
-  });
+  });*/
 });
