@@ -168,6 +168,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     `;*/
   };
 
+  /*Esto permite aladir algo que tenga un nombre igual que algo ya existente, habria que cambiar eso*/
+
   function saveEditProduct() {
     const editedItem = {
       id: foundItemId,
